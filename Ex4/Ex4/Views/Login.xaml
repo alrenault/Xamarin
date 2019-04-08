@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mvvm:BaseContentPage
+    xmlns:mvvm="clr-namespace:Storm.Mvvm.Forms;assembly=Storm.Mvvm.Forms" 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:UI="clr-namespace:Ex4.UI"
+    x:Class="Ex4.Views.Login">
+
+    <NavigationPage.TitleView>
+        <Label 
+            Text="{Binding TitleLabel}"
+            FontAttributes="Bold"
+            FontSize="20"/>
+    </NavigationPage.TitleView>
+
+    <AbsoluteLayout 
+        VerticalOptions="FillAndExpand"
+        HorizontalOptions="FillAndExpand">
+
+        <StackLayout
+            AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="0,0,1,1" 
+            VerticalOptions="StartAndExpand"
+            HorizontalOptions="FillAndExpand">
+
+            <!--Email-->
+            <Label 
+                Text="Email" 
+                TextColor="Black" 
+                FontSize="20" 
+                Margin="0,0,0,5"/>
+            <Entry 
+                x:Name="usernameEntry" 
+                Placeholder="Email" 
+                Margin="0,0,0,5" 
+                Text="{Binding Email, Mode=TwoWay}"/>
+
+            <!--Password-->
+            <Label 
+                Text="Mot de passe" 
+                TextColor="Black" 
+                FontSize="20" 
+                Margin="0,0,0,5"/>
+            <Entry 
+                x:Name="passwordEntry" 
+                Placeholder="Mot de passe" 
+                IsPassword="true" 
+                Margin="0,0,0,5" 
+                Text="{Binding Password, Mode=TwoWay}"/>
+
+            <!--Connexion-->
+            <Button 
+                Text="Se connecter" 
+                Command="{Binding LoginCommand}"/>
+        </StackLayout>
+
+        <UI:FloatingButton 
+                    Source="IconFloatButton.png"
+                    Command="{Binding SigninCommand}"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    AbsoluteLayout.LayoutBounds="1, 1, 80, 80"
+                    Margin="15"/>
+    </AbsoluteLayout>
+</mvvm:BaseContentPage>

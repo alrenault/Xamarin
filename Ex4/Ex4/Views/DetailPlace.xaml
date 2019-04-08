@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:mvvm="clr-namespace:Storm.Mvvm.Forms;assembly=Storm.Mvvm.Forms"
+            xmlns:UI="clr-namespace:Ex4.UI"
+            xmlns:modele="clr-namespace:Ex4.Modele"
+            x:Class="Ex4.Views.DetailPlace"
+            xmlns:vm="clr-namespace:Ex4.ViewModels"
+            x:DataType="vm:DetailPlaceViewModel"
+          >
+
+    <NavigationPage.TitleView>
+        <Label 
+            Text="{Binding Place.Title}"
+            FontAttributes="Bold"
+            FontSize="20"/>
+    </NavigationPage.TitleView>
+
+
+    <!--Details-->
+    <mvvm:BaseContentPage Icon="Info_icon.png">
+        <StackLayout 
+            Orientation="Vertical" 
+            Margin="20,15,20,20">
+            <StackLayout 
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="Start" 
+                Margin="0,0,0,10">
+                <Label 
+                    Text="Image" 
+                    TextColor="Black" 
+                    FontSize="20" 
+                    Margin="0,0,0,5"/>
+                <Image 
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    HeightRequest="200"
+                    WidthRequest="320"
+                    Source="{Binding Place.ImageSrc}"
+                />
+            </StackLayout>
+            <StackLayout 
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="Start" 
+                Margin="0,0,0,10">
+                <Label 
+                    Text="Description" 
+                    TextColor="Black" 
+                    FontSize="20" 
+                    Margin="0,0,0,5"/>
+                <Label Text="{Binding Place.Desc}"/>
+            </StackLayout>
+        </StackLayout>
+    </mvvm:BaseContentPage>
+
+    <!--Localisation-->
+    <mvvm:BaseContentPage Icon="Maps_icon.png">
+        <StackLayout 
+            Orientation="Vertical" 
+            Margin="20,15,20,20">
+            <StackLayout 
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="Start" Margin="0,0,0,10">
+                <Label 
+                    Text="Carte" 
+                    TextColor="Black"
+                    FontSize="20" 
+                    Margin="0,0,0,5"/>
+                <UI:MyMap WidthRequest="320" HeightRequest="320"
+                        x:Name="MyMap"
+                        IsShowingUser="true"
+                        MapType="Street"
+                        MapPosition="{Binding Place.Position}"
+                        MapPins="{Binding Pins}"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                     />
+            </StackLayout>
+        </StackLayout>
+    </mvvm:BaseContentPage>
+
+    <!--Commentaires-->
+    <mvvm:BaseContentPage Icon="Comm_icon.png">
+        <AbsoluteLayout 
+            AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0,0,0,10">
+                <Label Text="Commentaires" TextColor="Black" FontSize="20" Margin="0,0,0,5"/>
+
+                <ListView 
+                    x:Name="CommentsList" 
+                    HasUnevenRows="True" 
+                    ItemsSource="{Binding Place.Comments}"
+                    SelectionMode="None"
+                    IsPullToRefreshEnabled="True"
+                    RefreshCommand="{Binding RefreshCommand}"
+                    IsRefreshing="{Binding IsRefreshing}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="modele:Comment">
+                            <ViewCell>
+                                <Frame 
+                                    CornerRadius="4"
+                                    HasShadow="True"
+                                    Margin="4,4,4,4"
+                                    Padding="8,4,8,4"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="Start">
+                                    <StackLayout HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="Start"
+                                        Orientation="Horizontal">
+
+                                        <!--Item-->
+                                        <Image 
+                                           Grid.Column="0"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Center"
+                                           HeightRequest="48"
+                                           WidthRequest="48"
+                                           Source="{Binding Author.ImageSource}"
+                                           />
+
+                                        <StackLayout
+                                            Orientation="Vertical"
+                                            Grid.Column="1"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="Center">
+
+                                            <Label 
+                                                Text="{Binding CompletName}"
+                                                TextColor="Black"
+                                                LineBreakMode="WordWrap"
+                                                FontSize="16"/>
+
+                                            <Label 
+                                               Text="{Binding Text}"
+                                               FontSize="14"
+                                               TextColor="Gray"/>
+
+                                            <Label 
+                                                Text="{Binding Date}"
+                                                LineBreakMode="WordWrap"
+                                                FontSize="12"
+                                                HorizontalOptions="End"/>
+                                        </StackLayout>
+                                        <!--Item-->
+
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </StackLayout>
+
+
+            <UI:FloatingButton 
+                    Source="IconFloatButton.png"
+                    Command="{Binding AddCommentCommand}"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    AbsoluteLayout.LayoutBounds="1, 1, 80, 80"
+                    Margin="15"/>
+            
+
+        </AbsoluteLayout>
+    </mvvm:BaseContentPage>
+
+</TabbedPage>

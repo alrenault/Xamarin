@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mvvm:BaseContentPage
+    xmlns:mvvm="clr-namespace:Storm.Mvvm.Forms;assembly=Storm.Mvvm.Forms" 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Ex4.Views.SignIn"
+    xmlns:vm="clr-namespace:Ex4.ViewModels"
+    x:DataType="vm:SignInViewModel"
+    >
+
+    <NavigationPage.TitleView>
+        <Label 
+            Text="{Binding TitleLabel}"
+            FontAttributes="Bold"
+            FontSize="20"/>
+    </NavigationPage.TitleView>
+
+    <ScrollView>
+        <StackLayout>
+            <Label 
+                Text="Email"
+                TextColor="Black"
+                FontSize="20"
+                Margin="0,0,0,5"/>
+            <Entry
+                x:Name="usernameEntry" 
+                Placeholder="email" 
+                Margin="0,0,0,5" 
+                Text="{Binding Email, Mode=TwoWay}"/>
+
+            <Label 
+                Text="Prenom" 
+                TextColor="Black"
+                FontSize="20" 
+                Margin="0,0,0,5"/>
+            <Entry
+                x:Name="prenomEntry"
+                Placeholder="prenom"
+                Margin="0,0,0,5" 
+                Text="{Binding FirstName, Mode=TwoWay}"/>
+
+            <Label
+                Text="Nom" 
+                TextColor="Black" 
+                FontSize="20"
+                Margin="0,0,0,5"/>
+            <Entry 
+                x:Name="nomEntry"
+                Placeholder="nom"
+                Margin="0,0,0,5"
+                Text="{Binding LastName, Mode=TwoWay}"/>
+
+            <Label
+                Text="Mot de passe"
+                TextColor="Black" 
+                FontSize="20" 
+                Margin="0,0,0,5"/>
+            <Entry 
+                x:Name="passwordEntry"
+                Placeholder="mot de passe"
+                IsPassword="true" 
+                Margin="0,0,0,5" 
+                Text="{Binding Password, Mode=TwoWay}"/>
+
+            <Label 
+                Text="Repeter votre mot de passe"
+                TextColor="Black" 
+                FontSize="20"
+                Margin="0,0,0,5"/>
+            <Entry 
+                x:Name="passwordEntryTwo"
+                Placeholder="mot de passe"
+                IsPassword="true"
+                Margin="0,0,0,5" 
+                Text="{Binding PasswordTwo, Mode=TwoWay}"/>
+
+            <Button 
+                Text="S'inscrire"
+                Command="{Binding SigninCommand}"/>
+        </StackLayout>
+    </ScrollView>
+
+</mvvm:BaseContentPage>
