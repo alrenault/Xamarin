@@ -57,7 +57,7 @@ namespace Ex4.ViewModels{
         }
 
         private async void OpenSignin(){
-            await NavigationService.PushAsync<SignIn>(new Dictionary<string, object>());
+            await NavigationService.PushAsync<Register>(new Dictionary<string, object>());
         }
 
 

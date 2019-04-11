@@ -12,9 +12,9 @@ using Xamarin.Forms.Xaml;
 namespace Ex4.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SignIn : BaseContentPage
+	public partial class Register : BaseContentPage
     {
-		public SignIn ()
+		public Register ()
 		{
 			InitializeComponent();
             BindingContext = new RegisterViewModel();

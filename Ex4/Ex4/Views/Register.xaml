@@ -3,7 +3,7 @@
     xmlns:mvvm="clr-namespace:Storm.Mvvm.Forms;assembly=Storm.Mvvm.Forms" 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Ex4.Views.SignIn"
+    x:Class="Ex4.Views.Register"
     xmlns:vm="clr-namespace:Ex4.ViewModels"
     x:DataType="vm:RegisterViewModel"
     >
