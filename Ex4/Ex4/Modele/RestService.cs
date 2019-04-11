@@ -236,7 +236,7 @@ namespace Ex4.Modele
             return (false, "Erreur lors de la tentative d'ajout du commentaire. Veuillez réessayer.");
         }
 
-        public async Task<(Boolean, string)> SignIn(string email, string password, string firstName, string lastName){
+        public async Task<(Boolean, string)> Register(string email, string password, string firstName, string lastName){
             User user = new User(email, password, firstName, lastName);
 
             string RestUrl = "https://td-api.julienmialon.com/auth/register";
@@ -267,6 +267,36 @@ namespace Ex4.Modele
                 Debug.WriteLine(e.Message);
             }
             return (false, "Erreur lors de la tentative de création du compte. Veuillez réessayer.");
+        }
+
+        //Get data of an user
+        public async Task<(Boolean, User)> GetUserData(){
+            Token.RefreshIfNecessary();
+
+            string RestUrl = "https://td-api.julienmialon.com/me";
+            var uri = new Uri(string.Format(RestUrl, string.Empty));
+
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, RestUrl);
+            request.Headers.Authorization = new AuthenticationHeaderValue(Token.Ticket.TokenType, Token.Ticket.AccessToken);
+
+            try{
+                var response = await client.SendAsync(request);
+                if (response.IsSuccessStatusCode){
+                    var json = await response.Content.ReadAsStringAsync();
+                    RestResponse<User> restResponse = JsonConvert.DeserializeObject<RestResponse<User>>(json);
+
+                    if ("true".Equals(restResponse.IsSuccess)){
+                        return (true, restResponse.Data);
+                    }
+                    else{
+                        // TODO ?
+                    }
+                }
+            }
+            catch (Exception e){
+                Debug.WriteLine(e.Message);
+            }
+            return (false, null);
         }
 
     }

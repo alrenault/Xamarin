@@ -10,8 +10,7 @@ using Xamarin.Forms;
 
 namespace Ex4.Modele
 {
-	public class User : NotifierBase
-    {
+	public class User : NotifierBase{
         private int? _idPicture;
         [JsonProperty(PropertyName = "image_id", NullValueHandling = NullValueHandling.Include)]
         public int? IdPicture{
@@ -24,11 +23,11 @@ namespace Ex4.Modele
             }
         }
 
-        private ImageSource _imageSource;
-        public ImageSource ImageSource
+        private ImageSource _imageSrc;
+        public ImageSource ImageSrc
         {
-            get => _imageSource;
-            set => SetProperty(ref _imageSource, value);
+            get => _imageSrc;
+            set => SetProperty(ref _imageSrc, value);
         }
 
         [JsonProperty(PropertyName = "id")]
@@ -72,11 +71,11 @@ namespace Ex4.Modele
 
         private async void UpdatePicture(){
             if (_idPicture == null){
-                ImageSource = ImageSource.FromFile("no_pic.jpg");
+                ImageSrc = ImageSource.FromFile("no_pic.jpg");
             }
             else{
                 byte[] stream = await RestService.Rest.LoadPicture(IdPicture);
-                ImageSource = ImageSource.FromStream(() => new MemoryStream(stream));
+                ImageSrc = ImageSource.FromStream(() => new MemoryStream(stream));
             }
         }
     }

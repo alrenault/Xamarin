@@ -116,7 +116,7 @@
                                            VerticalOptions="Center"
                                            HeightRequest="48"
                                            WidthRequest="48"
-                                           Source="{Binding Author.ImageSource}"
+                                           Source="{Binding Author.ImageSrc}"
                                            />
 
                                         <StackLayout

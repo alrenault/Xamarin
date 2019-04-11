@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mvvm:BaseContentPage
+    xmlns:mvvm="clr-namespace:Storm.Mvvm.Forms;assembly=Storm.Mvvm.Forms"
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Ex4.Views.UserProfile"
+    xmlns:vm="clr-namespace:Ex4.ViewModels"
+    x:DataType="vm:UserProfileViewModel"
+>
+    <NavigationPage.TitleView>
+        <Label 
+            Text="{Binding TitleLabel}"
+            FontAttributes="Bold"
+            FontSize="20"/>
+    </NavigationPage.TitleView>
+
+    <StackLayout>
+        <Label
+            Text="Prénom"
+            FontAttributes="Bold"
+            FontSize="25"
+            HorizontalTextAlignment="Center"/>
+        <Label Text="{Binding User.FirstName}"
+               HorizontalTextAlignment="Center"
+               FontSize="15"/>
+
+        <Label
+            Text="Nom"
+            FontAttributes="Bold"
+            FontSize="25"
+            HorizontalTextAlignment="Center"/>
+        <Label Text="{Binding User.LastName}"
+               HorizontalTextAlignment="Center"
+               FontSize="15"/>
+
+        <Label
+            Text="Email"
+            FontAttributes="Bold"
+            FontSize="25"
+            HorizontalTextAlignment="Center"/>
+        <Label Text="{Binding User.Email}"
+                HorizontalTextAlignment="Center"
+               FontSize="15"/>
+
+        <Label
+            Text="Image de profil"
+            FontAttributes="Bold"
+            FontSize="25"
+            HorizontalTextAlignment="Center"/>
+        <Image 
+            VerticalOptions="Center"
+            HeightRequest="96"
+            WidthRequest="96"
+            Source="{Binding User.ImageSrc}"
+             HorizontalOptions="Center"
+            Margin="0,10,0,0"/>
+    </StackLayout>
+</mvvm:BaseContentPage>

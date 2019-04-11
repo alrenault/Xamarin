@@ -12,12 +12,12 @@ using Xamarin.Forms.Xaml;
 namespace Ex4.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SignIn : BaseContentPage
-    {
-		public SignIn ()
+	public partial class UserProfile : BaseContentPage
+	{
+		public UserProfile ()
 		{
-			InitializeComponent();
-            BindingContext = new RegisterViewModel();
-        }
-    }
+			InitializeComponent ();
+            BindingContext = new UserProfileViewModel();
+		}
+	}
 }

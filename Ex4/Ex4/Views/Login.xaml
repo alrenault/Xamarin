@@ -56,7 +56,7 @@
 
         <UI:FloatingButton 
                     Source="IconFloatButton.png"
-                    Command="{Binding SigninCommand}"
+                    Command="{Binding RegisterCommand}"
                     AbsoluteLayout.LayoutFlags="PositionProportional"
                     AbsoluteLayout.LayoutBounds="1, 1, 80, 80"
                     Margin="15"/>

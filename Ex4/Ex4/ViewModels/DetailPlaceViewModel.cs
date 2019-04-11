@@ -87,7 +87,6 @@ namespace Ex4.ViewModels
         }
 
         private async void OpenAddComment(){
-            Debug.WriteLine("Je passe par la .........................");
             await NavigationService.PushAsync<AddComment>(new Dictionary<string, object>() { { "PlaceId", Place.Id } });
         }
 

@@ -14,7 +14,7 @@ namespace Ex4.ViewModels{
         public string TitleLabel { get; set; }
 
         public ICommand LoginCommand { get; set; }
-        public ICommand SigninCommand { get; set; }
+        public ICommand RegisterCommand { get; set; }
 
         private string _email;
         public string Email{
@@ -30,8 +30,8 @@ namespace Ex4.ViewModels{
 
         public LoginViewModel(){
             LoginCommand = new Command(LoginClicked);
-            SigninCommand = new Command(SigninClicked);
-            TitleLabel = "Connection";
+            RegisterCommand = new Command(RegisterClicked);
+            TitleLabel = "Connexion";
         }
 
         private void LoginClicked(object _){
@@ -52,7 +52,7 @@ namespace Ex4.ViewModels{
             Password = "";
         }
 
-        private void SigninClicked(object _){
+        private void RegisterClicked(object _){
             OpenSignin();
         }
 

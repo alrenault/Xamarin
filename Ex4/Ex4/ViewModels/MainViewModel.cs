@@ -19,7 +19,7 @@ namespace Ex4.ViewModels
     {
         private string _titleLabel;
         public string TitleLabel{
-            get => this._titleLabel;
+            get => _titleLabel;
             set => SetProperty(ref _titleLabel, value);
         }
 
@@ -38,7 +38,7 @@ namespace Ex4.ViewModels
             set => SetProperty(ref _isRefreshing, value);
         }
 
-
+        public ICommand SeeUserProfile { get; set; }
 
         public Position MaLocation { get; set; }
 
@@ -58,6 +58,7 @@ namespace Ex4.ViewModels
         public MainViewModel(){
             TitleLabel = "Liste des lieux";
             RefreshCommand = new Command(RefreshClicked);
+            SeeUserProfile = new Command(SeeUserInfosClicked);
         }
 
         private void RefreshClicked(){
@@ -68,6 +69,14 @@ namespace Ex4.ViewModels
         private async void RefreshPlaces(){
             await GetLocation();
             ListPlace = await RestService.Rest.LoadPlaces(MaLocation);
+        }
+
+        private void SeeUserInfosClicked(){
+            OpenUserInfos();
+        }
+
+        private async void OpenUserInfos(){
+            await NavigationService.PushAsync<UserProfile>(new Dictionary<string, object>());
         }
 
         //Localisation

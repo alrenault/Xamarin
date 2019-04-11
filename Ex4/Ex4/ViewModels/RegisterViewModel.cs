@@ -10,10 +10,10 @@ using Xamarin.Forms;
 
 namespace Ex4.ViewModels
 {
-	public class SignInViewModel : ViewModelBase{
+	public class RegisterViewModel : ViewModelBase{
         public string TitleLabel { get; set; }
 
-        public ICommand SigninCommand { get; set; }
+        public ICommand RegisterCommand { get; set; }
 
         private string _email;
         public string Email{
@@ -45,21 +45,21 @@ namespace Ex4.ViewModels
             set => SetProperty(ref _lastName, value);
         }
 
-        public SignInViewModel(){
+        public RegisterViewModel(){
             TitleLabel = "Création d'un nouveau compte";
-            SigninCommand = new Command(SigninClicked);
+            RegisterCommand = new Command(SigninClicked);
         }
 
         private void SigninClicked(object _){
-            Signin();
+            Register();
         }
 
-        private async void Signin(){
+        private async void Register(){
             if (!string.IsNullOrWhiteSpace(Email)){
                 if (!string.IsNullOrWhiteSpace(FirstName) && !string.IsNullOrWhiteSpace(LastName)){
                     if (!string.IsNullOrWhiteSpace(Password) && !string.IsNullOrWhiteSpace(PasswordTwo)){
                         if ((Password == PasswordTwo)){
-                            (Boolean test, string message) = await RestService.Rest.SignIn(Email, Password, FirstName, LastName);
+                            (Boolean test, string message) = await RestService.Rest.Register(Email, Password, FirstName, LastName);
                             if (test){
                                 await Application.Current.MainPage.DisplayAlert("Inscription", message, "OK");
 

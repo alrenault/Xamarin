@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Ex4.Views.SignIn"
     xmlns:vm="clr-namespace:Ex4.ViewModels"
-    x:DataType="vm:SignInViewModel"
+    x:DataType="vm:RegisterViewModel"
     >
 
     <NavigationPage.TitleView>
@@ -76,7 +76,7 @@
 
             <Button 
                 Text="S'inscrire"
-                Command="{Binding SigninCommand}"/>
+                Command="{Binding RegisterCommand}"/>
         </StackLayout>
     </ScrollView>
 
