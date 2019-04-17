@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mvvm:BaseContentPage
+     xmlns:mvvm="clr-namespace:Storm.Mvvm.Forms;assembly=Storm.Mvvm.Forms" 
+     xmlns="http://xamarin.com/schemas/2014/forms" 
+     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+     x:Class="Ex4.Views.NewPlace"
+     xmlns:vm="clr-namespace:Ex4.ViewModels"
+     x:DataType="vm:NewPlaceViewModel">
+
+    <NavigationPage.TitleView>
+        <Label 
+            Text="{Binding TitleLabel}"
+            FontAttributes="Bold"
+            FontSize="20"/>
+    </NavigationPage.TitleView>
+
+    <ScrollView>
+        <StackLayout>
+
+            <Image 
+               Source="{Binding ImageSource}"
+               WidthRequest="150"
+               HeightRequest="150"/>
+
+            <Button 
+                Text="Prendre une photo" 
+                Command="{Binding NewPhoto}"/>
+            <Button 
+                Text="Prendre une image dans votre gallerie" 
+                Command="{Binding NewImage}"/>
+
+            <Label Text="Nom"/>
+            <Entry 
+                Text="{Binding NamePlace, Mode=TwoWay}" 
+                Placeholder="Nom"/>
+
+            <Label Text="Description"/>
+            <Entry 
+                Text="{Binding DescriptionPlace, Mode=TwoWay}" 
+                Placeholder="Description"/>
+
+            <Label Text="Latitude"/>
+            <Entry 
+                Text="{Binding LatitudePlace, Mode=TwoWay}" 
+                Placeholder="Latitude"/>
+
+            <Label Text="Longitude"/>
+            <Entry 
+                Text="{Binding LongitudePlace, Mode=TwoWay}" 
+                Placeholder="Longitude"/>
+
+            <Button 
+                Text="Prendre ma position" 
+                Command="{Binding GetPosition}"/>
+
+            <Button 
+                Text="Valider" 
+                Command="{Binding AddPlace}"/>
+        </StackLayout>
+    </ScrollView>
+</mvvm:BaseContentPage>

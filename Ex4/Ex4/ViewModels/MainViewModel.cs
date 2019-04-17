@@ -40,6 +40,9 @@ namespace Ex4.ViewModels
 
         public ICommand SeeUserProfile { get; set; }
 
+        public ICommand AddPlaceCommand { get; set; }
+
+
         public Position MaLocation { get; set; }
 
         private PlaceModel _currentPlace;
@@ -59,6 +62,8 @@ namespace Ex4.ViewModels
             TitleLabel = "Liste des lieux";
             RefreshCommand = new Command(RefreshClicked);
             SeeUserProfile = new Command(SeeUserInfosClicked);
+            AddPlaceCommand = new Command(AddPlaceClicked);
+
         }
 
         private void RefreshClicked(){
@@ -77,6 +82,14 @@ namespace Ex4.ViewModels
 
         private async void OpenUserInfos(){
             await NavigationService.PushAsync<UserProfile>(new Dictionary<string, object>());
+        }
+
+        private void AddPlaceClicked(){
+            OpenAddPlace();
+        }
+
+        private async void OpenAddPlace(){
+            await NavigationService.PushAsync<NewPlace>(new Dictionary<string, object>());
         }
 
         //Localisation
@@ -147,8 +160,6 @@ namespace Ex4.ViewModels
 
         public async void OpenDetailPlace(PlaceModel place)
         {
-            Debug.WriteLine("IIIIIIIIIIDDDDDDDDD");
-            Debug.WriteLine(place.Id);
             await NavigationService.PushAsync<DetailPlace>(new Dictionary<string, object>() { { "PlaceId", place.Id } });
         }
 

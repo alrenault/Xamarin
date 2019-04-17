@@ -85,11 +85,17 @@
         </StackLayout>
 
         <UI:FloatingButton 
-                    Source="IconUserProfile.png"
-                    Command="{Binding SeeUserProfile}"
-                    AbsoluteLayout.LayoutFlags="PositionProportional"
-                    AbsoluteLayout.LayoutBounds="1, 1, 80, 80"
-                    Margin="15"/>
+            Source="IconFloatButton.png"
+            Command="{Binding AddPlaceCommand}"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            AbsoluteLayout.LayoutBounds=" 1,1, 80, 80"
+             Margin="15"/>
+        <UI:FloatingButton 
+            Source="IconUserProfile.png"
+            Command="{Binding SeeUserProfile}"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            AbsoluteLayout.LayoutBounds="0, 1, 80, 80"
+            Margin="15"/>
     </AbsoluteLayout>
 
 

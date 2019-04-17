@@ -205,7 +205,7 @@ namespace Ex4.Modele
 
 
 
-
+        //Add a comment to a place
         public async Task<(Boolean, string)> AddComment(long idPlace, string texte){
             Token.RefreshIfNecessary();
 
@@ -297,6 +297,85 @@ namespace Ex4.Modele
                 Debug.WriteLine(e.Message);
             }
             return (false, null);
+        }
+
+
+        //Add a place
+        public async Task<(Boolean, string)> AddPlace(string title, string description, byte[] imageData, string latitude, string longitude){
+            Token.RefreshIfNecessary();
+
+            string RestUrl = "https://td-api.julienmialon.com/places/";
+
+            // Je m'occupe en premier de l'image
+            (Boolean test, int image_id) = await AddPicture(imageData);
+
+            if (test){
+                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, RestUrl);
+                request.Headers.Authorization = new AuthenticationHeaderValue(Token.Ticket.TokenType, Token.Ticket.AccessToken);
+                string content = content = "{"
+                    + "\"title\": \"" + title + "\","
+                    + "\"description\": \"" + description + "\","
+                    + "\"image_id\": " + image_id + ","
+                    + "\"latitude\": " + latitude + ","
+                    + "\"longitude\": " + longitude
+                    + "}";
+                request.Content = new StringContent(content, Encoding.UTF8, "application/json");
+
+                try{
+                    var response = await client.SendAsync(request);
+
+                    var json = await response.Content.ReadAsStringAsync();
+                    RestResponse restResponse = JsonConvert.DeserializeObject<RestResponse>(json);
+
+
+                    if (response.IsSuccessStatusCode){
+                        if ("true".Equals(restResponse.IsSuccess)){
+                            return (true, "Ajout de la place effectué.");
+                        }
+                        else{
+                            return (false, "Votre place n'a pû être ajouté. " + restResponse.ErrorMessage);
+                        }
+                    }
+                    else{
+                        return (false, "Erreur lors de la tentative d'ajout d'une place. " + restResponse.ErrorMessage + " Veuillez réessayer.");
+                    }
+                }
+                catch (Exception e){
+                    return (false, "Erreur lors de la tentative d'ajout d'une place." + e.Message + " Veuillez réessayer.");
+                }
+            }
+            else{
+                return (false, "Une erreur est survenue lors de l'envoie de l'image. Merci de réessayer.");
+            }
+        }
+
+
+        //Add a picture
+        public async Task<(Boolean, int)> AddPicture(byte[] imageData){
+            Token.RefreshIfNecessary();
+
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://td-api.julienmialon.com/images");
+            request.Headers.Authorization = new AuthenticationHeaderValue(Token.Ticket.TokenType, Token.Ticket.AccessToken);
+
+            MultipartFormDataContent requestContent = new MultipartFormDataContent();
+
+            var imageContent = new ByteArrayContent(imageData);
+            imageContent.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
+
+            requestContent.Add(imageContent, "file", "file.jpg");
+            request.Content = requestContent;
+
+
+            var response = await client.SendAsync(request);
+
+            if (response.IsSuccessStatusCode){
+                var json = await response.Content.ReadAsStringAsync();
+                RestResponse<ImageResponse> restResponse = JsonConvert.DeserializeObject<RestResponse<ImageResponse>>(json);
+                return (true, restResponse.Data.IdNewImage);
+            }
+            else{
+                return (false, 1);
+            }
         }
 
     }
