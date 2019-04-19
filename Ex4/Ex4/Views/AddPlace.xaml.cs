@@ -12,12 +12,12 @@ using Xamarin.Forms.Xaml;
 namespace Ex4.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class NewPlace : BaseContentPage
+	public partial class AddPlace : BaseContentPage
     {
-		public NewPlace ()
+		public AddPlace ()
 		{
 			InitializeComponent ();
-            BindingContext = new NewPlaceViewModel();
+            BindingContext = new AddPlaceViewModel();
 
         }
     }

@@ -52,8 +52,8 @@
                                         Grid.Column="0"
                                        HorizontalOptions="Start"
                                        VerticalOptions="Center"
-                                       HeightRequest="48"
-                                       WidthRequest="48"
+                                       HeightRequest="54"
+                                       WidthRequest="54"
                                        Source="{Binding ImageSrc}"
                                        />
                                     <StackLayout Orientation="Vertical"

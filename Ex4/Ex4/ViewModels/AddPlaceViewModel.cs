@@ -13,7 +13,7 @@ using Xamarin.Forms;
 
 namespace Ex4.ViewModels
 {
-	public class NewPlaceViewModel : ViewModelBase{
+	public class AddPlaceViewModel : ViewModelBase{
         public string TitleLabel { get; set; }
 
         private string _namePlace;
@@ -55,7 +55,7 @@ namespace Ex4.ViewModels
 
 
 
-        public NewPlaceViewModel(){
+        public AddPlaceViewModel(){
             TitleLabel = "Ajout d'un lieu";
             NewPhoto = new Command(PhotoCommand);
             NewImage = new Command(ImageCommand);

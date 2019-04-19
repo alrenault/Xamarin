@@ -17,44 +17,51 @@
 
         <StackLayout>
             <Label
-            Text="Prénom"
-            FontAttributes="Bold"
-            FontSize="25"
-            HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding User.FirstName}"
-               HorizontalTextAlignment="Center"
-               FontSize="15"/>
-
-            <Label
-            Text="Nom"
-            FontAttributes="Bold"
-            FontSize="25"
-            HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding User.LastName}"
-               HorizontalTextAlignment="Center"
-               FontSize="15"/>
-
-            <Label
-            Text="Email"
-            FontAttributes="Bold"
-            FontSize="25"
-            HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding User.Email}"
+                Text="Prénom"
+                FontAttributes="Bold"
+                FontSize="25"
+                TextColor="Black"
+                HorizontalTextAlignment="Center"/>
+            <Label 
+                Text="{Binding User.FirstName}"
                 HorizontalTextAlignment="Center"
-               FontSize="15"/>
+                FontSize="15"/>
 
             <Label
-            Text="Image de profil"
-            FontAttributes="Bold"
-            FontSize="25"
-            HorizontalTextAlignment="Center"/>
+                Text="Nom"
+                FontAttributes="Bold"
+                FontSize="25"
+                TextColor="Black"
+                HorizontalTextAlignment="Center"/>
+            <Label 
+                Text="{Binding User.LastName}"
+                HorizontalTextAlignment="Center"
+                FontSize="15"/>
+
+            <Label
+                Text="Email"
+                FontAttributes="Bold"
+                FontSize="25"
+                TextColor="Black"
+                HorizontalTextAlignment="Center"/>
+            <Label 
+                Text="{Binding User.Email}"
+                HorizontalTextAlignment="Center"
+                FontSize="15"/>
+
+            <Label
+                Text="Image de profil"
+                FontAttributes="Bold"
+                FontSize="25"
+                TextColor="Black"
+                HorizontalTextAlignment="Center"/>
             <Image 
-            VerticalOptions="Center"
-            HeightRequest="96"
-            WidthRequest="96"
-            Source="{Binding User.ImageSrc}"
-            HorizontalOptions="Center"
-            Margin="0,10,0,0"/>
+                VerticalOptions="Center"
+                HeightRequest="96"
+                WidthRequest="96"
+                Source="{Binding User.ImageSrc}"
+                HorizontalOptions="Center"
+                Margin="0,10,0,0"/>
         </StackLayout>
     </mvvm:BaseContentPage>
 
@@ -63,6 +70,7 @@
             <Label 
                 Text="Ancien mot de passe"
                 FontAttributes="Bold"
+                TextColor="Black"
                 FontSize="20"/>
             <Entry 
                 Text="{Binding OldPassword, Mode=TwoWay}" 
@@ -72,6 +80,7 @@
             <Label 
                 Text="Votre nouveau mot de passe"
                 FontAttributes="Bold"
+                TextColor="Black"
                 FontSize="20"/>
             <Entry 
                 Text="{Binding NewPassword, Mode=TwoWay}" 
@@ -81,6 +90,7 @@
             <Label 
                 Text="Repeter votre nouveau mot de passe"
                 FontAttributes="Bold"
+                TextColor="Black"
                 FontSize="20"/>
             <Entry 
                 Text="{Binding NewPasswordBis, Mode=TwoWay}" 

@@ -3,9 +3,9 @@
      xmlns:mvvm="clr-namespace:Storm.Mvvm.Forms;assembly=Storm.Mvvm.Forms" 
      xmlns="http://xamarin.com/schemas/2014/forms" 
      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-     x:Class="Ex4.Views.NewPlace"
+     x:Class="Ex4.Views.AddPlace"
      xmlns:vm="clr-namespace:Ex4.ViewModels"
-     x:DataType="vm:NewPlaceViewModel">
+     x:DataType="vm:AddPlaceViewModel">
 
     <NavigationPage.TitleView>
         <Label 
@@ -29,22 +29,38 @@
                 Text="Prendre une image dans votre gallerie" 
                 Command="{Binding NewImage}"/>
 
-            <Label Text="Nom"/>
+            <Label 
+              Text="Nom"
+               TextColor="Black" 
+               FontSize="20" 
+               FontAttributes="Bold"/>
             <Entry 
                 Text="{Binding NamePlace, Mode=TwoWay}" 
                 Placeholder="Nom"/>
 
-            <Label Text="Description"/>
+            <Label 
+              Text="Description"
+               TextColor="Black" 
+               FontSize="20" 
+               FontAttributes="Bold"/>
             <Entry 
                 Text="{Binding DescriptionPlace, Mode=TwoWay}" 
                 Placeholder="Description"/>
 
-            <Label Text="Latitude"/>
+            <Label 
+              Text="Latitude"
+               TextColor="Black" 
+               FontSize="20" 
+               FontAttributes="Bold"/>
             <Entry 
                 Text="{Binding LatitudePlace, Mode=TwoWay}" 
                 Placeholder="Latitude"/>
 
-            <Label Text="Longitude"/>
+            <Label 
+              Text="Longitude"
+               TextColor="Black" 
+               FontSize="20" 
+               FontAttributes="Bold"/>
             <Entry 
                 Text="{Binding LongitudePlace, Mode=TwoWay}" 
                 Placeholder="Longitude"/>

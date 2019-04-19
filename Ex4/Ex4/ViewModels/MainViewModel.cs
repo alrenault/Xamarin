@@ -89,7 +89,7 @@ namespace Ex4.ViewModels
         }
 
         private async void OpenAddPlace(){
-            await NavigationService.PushAsync<NewPlace>(new Dictionary<string, object>());
+            await NavigationService.PushAsync<AddPlace>(new Dictionary<string, object>());
         }
 
         //Localisation
