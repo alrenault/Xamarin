@@ -378,5 +378,36 @@ namespace Ex4.Modele
             }
         }
 
+        public async Task<(Boolean, string)> PatchPassword(string oldPassword, string newPassword){
+            Token.RefreshIfNecessary();
+
+            string RestUrl = "https://td-api.julienmialon.com/me/password";
+
+            var method = new HttpMethod("PATCH");
+
+            HttpRequestMessage request = new HttpRequestMessage(method, RestUrl){
+                Content = new StringContent("{\"old_password\": \"" + oldPassword + "\", \"new_password\": \"" + newPassword + "\"}", Encoding.UTF8, "application/json")
+            };
+            request.Headers.Authorization = new AuthenticationHeaderValue(Token.Ticket.TokenType, Token.Ticket.AccessToken);
+
+            try{
+                var response = await client.SendAsync(request);
+
+                var json = await response.Content.ReadAsStringAsync();
+                RestResponse restResponse = JsonConvert.DeserializeObject<RestResponse>(json);
+
+                if (response.IsSuccessStatusCode){
+                    return ("true".Equals(restResponse.IsSuccess), "Modification du mot de passe prise en compte.");
+                }
+                else{
+                    return (false, restResponse.ErrorMessage);
+                }
+            }
+            catch (Exception e){
+                Debug.WriteLine(e.Message);
+                return (false, e.Message);
+            }
+        }
+
     }
 }

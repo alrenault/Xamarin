@@ -12,8 +12,8 @@ using Xamarin.Forms.Xaml;
 namespace Ex4.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class UserProfile : BaseContentPage
-	{
+	public partial class UserProfile : TabbedPage
+    {
 		public UserProfile ()
 		{
 			InitializeComponent ();

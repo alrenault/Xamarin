@@ -1,6 +1,5 @@
 A faire :
 - Ecran de modification de profil
-- Ecran permettant d'éditer son mot de passe
 
 
 
@@ -14,3 +13,9 @@ Fait :
 - Ecran de profil
 - Ajout d'un lieu (nom, desc, image, position GPS)
 --> Image : image depuis la galerie ou direct par appareil photo
+- Ecran permettant d'éditer son mot de passe
+
+
+Problèmes connus :
+- Problème de conso de données (recharge les image à chaque scroll)
+- Problème bas de la listView : dernier élem coupé
