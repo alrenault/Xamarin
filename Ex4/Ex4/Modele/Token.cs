@@ -65,7 +65,7 @@ namespace Ex4.Modele
         public static void RefreshIfNecessary(){
             if (DateTime.Today.AddMinutes(10) >= Ticket._expiresIn){
                 Refresh();
-                // TODO : Si jamais Refresh fail et que le token n'existe plus (_token == null), il faudrait déconnecter l'utilisateur ...
+                // TODO : Si jamais Refresh fail et _token == null --> déconnecter l'utilisateur
             }
         }
 

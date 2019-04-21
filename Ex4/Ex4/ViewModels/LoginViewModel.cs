@@ -35,10 +35,10 @@ namespace Ex4.ViewModels{
         }
 
         private void LoginClicked(object _){
-            OpenFocusPlace();
+            OpenListPlace();
         }
 
-        private async void OpenFocusPlace(){
+        private async void OpenListPlace(){
             await RestService.Rest.LogIn(Email, Password);
 
             if (Token.IsInit()){

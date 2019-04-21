@@ -74,14 +74,12 @@
                                             Text="{Binding TxtDist}"
                                             TextColor="Gray"
                                             LineBreakMode="WordWrap"
-                                            FontSize="13"
-                                            HorizontalTextAlignment="Center"/>
+                                            FontSize="13"/>
                                         <Label 
                                            Text="{Binding Desc}"
                                            FontSize="10"
                                            TextColor="Gray"
-                                           MaxLines="3"
-                                           HorizontalTextAlignment="Center"/>
+                                           MaxLines="3"/>
                                     </StackLayout>
                                     <!--Item-->
 

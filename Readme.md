@@ -1,5 +1,6 @@
 A faire :
 - Ecran de modification de profil
+- Aucune gestion de déconnexion
 
 
 
@@ -18,3 +19,4 @@ Fait :
 
 Problèmes connus :
 - Problème de conso de données (recharge les image à chaque scroll)
+- Lorsque sort de l'application, plus possible de se reconnecter (besoin de kill l'appli avant de pouvoir se reconnecter)

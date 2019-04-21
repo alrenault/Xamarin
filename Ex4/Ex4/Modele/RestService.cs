@@ -146,7 +146,8 @@ namespace Ex4.Modele
 
             var stringContent = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
 
-            try{
+            try
+            {
                 var response = await client.PostAsync(uri, stringContent);
 
                 if (response.IsSuccessStatusCode){
@@ -156,7 +157,8 @@ namespace Ex4.Modele
                     if ("true".Equals(restResponse.IsSuccess)){
                         Token.Ticket = restResponse.Data;
                     }
-                    else{
+                    else
+                    {
                         // TODO
                         Token.Destroy();
                     }
