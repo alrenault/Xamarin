@@ -16,11 +16,14 @@
             FontSize="20"/>
     </NavigationPage.TitleView>
     <AbsoluteLayout 
-            AbsoluteLayout.LayoutFlags="All"
-            AbsoluteLayout.LayoutBounds="0,0,1,1">
+       VerticalOptions="FillAndExpand" 
+            HorizontalOptions="FillAndExpand"
+       >
         <StackLayout 
             VerticalOptions="FillAndExpand" 
-            HorizontalOptions="FillAndExpand">
+            HorizontalOptions="FillAndExpand"
+             AbsoluteLayout.LayoutFlags="All"
+        AbsoluteLayout.LayoutBounds="0,0,1,1">
 
             <ListView 
                 x:Name="PlaceList" 
@@ -56,22 +59,29 @@
                                        WidthRequest="54"
                                        Source="{Binding ImageSrc}"
                                        />
-                                    <StackLayout Orientation="Vertical"
-                                    Grid.Column="1"
-                                    HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="Center">
-                                        <Label Text="{Binding Title}"
-                                        TextColor="Black"
-                                        LineBreakMode="WordWrap"
-                                        FontSize="20"/>
-                                        <Label Text="{Binding TxtDist}"
-                                        TextColor="Gray"
-                                        LineBreakMode="WordWrap"
-                                        FontSize="13"/>
-                                        <Label Text="{Binding Desc}"
+                                    <StackLayout 
+                                        Orientation="Vertical"
+                                        Grid.Column="1"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="Center">
+                                        <Label 
+                                            Text="{Binding Title}"
+                                            TextColor="Black"
+                                            LineBreakMode="WordWrap"
+                                            FontSize="20"
+                                            HorizontalTextAlignment="Center"/>
+                                        <Label 
+                                            Text="{Binding TxtDist}"
+                                            TextColor="Gray"
+                                            LineBreakMode="WordWrap"
+                                            FontSize="13"
+                                            HorizontalTextAlignment="Center"/>
+                                        <Label 
+                                           Text="{Binding Desc}"
                                            FontSize="10"
                                            TextColor="Gray"
-                                           MaxLines="3"/>
+                                           MaxLines="3"
+                                           HorizontalTextAlignment="Center"/>
                                     </StackLayout>
                                     <!--Item-->
 

@@ -18,4 +18,3 @@ Fait :
 
 Problèmes connus :
 - Problème de conso de données (recharge les image à chaque scroll)
-- Problème bas de la listView : dernier élem coupé

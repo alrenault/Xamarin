@@ -85,9 +85,14 @@
     <!--Commentaires-->
     <mvvm:BaseContentPage Icon="Comm_icon.png">
         <AbsoluteLayout 
-            AbsoluteLayout.LayoutFlags="All"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <StackLayout 
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="StartAndExpand" 
+                Margin="0,0,0,10"
+                 AbsoluteLayout.LayoutFlags="All"
             AbsoluteLayout.LayoutBounds="0,0,1,1">
-            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0,0,0,10">
                 <Label 
                     Text="Commentaires" 
                     TextColor="Black" 
